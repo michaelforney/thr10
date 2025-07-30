@@ -15,5 +15,26 @@ SECTIONS
 	.data       0x1008000 : { thr10_*.o(.data)     } >ram0 AT>rom
 	.bss                  : { thr10_*.o(.bss)      } >ram0
 
+	.text.patch 0x20A0000 : { *(.text)             } >rom
+	.rodata.patch         : { *(.rodata*)          } >rom
+	.data.patch           : { *(.data)             } >ram0 AT>rom
+	.bss.patch            : { *(.bss)              } >ram0
+
 	.fwinfo 0x210FFD0 : { *(.fwinfo) } >rom
 }
+
+__data            = ADDR(.data);
+__data_load       = LOADADDR(.data);
+__data_size       = SIZEOF(.data);
+__data_dsp        = ADDR(.data.dsp);
+__data_dsp_load   = LOADADDR(.data.dsp);
+__data_dsp_size   = SIZEOF(.data.dsp);
+__data_patch      = ADDR(.data.patch);
+__data_patch_load = LOADADDR(.data.patch);
+__data_patch_size = SIZEOF(.data.patch);
+__bss             = ADDR(.bss);
+__bss_size        = SIZEOF(.bss);
+__bss_dsp         = ADDR(.bss.dsp);
+__bss_dsp_size    = SIZEOF(.bss.dsp);
+__bss_patch       = ADDR(.bss.patch);
+__bss_patch_size  = SIZEOF(.bss.patch);
