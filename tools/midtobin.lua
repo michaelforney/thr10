@@ -131,7 +131,7 @@ function miditrack:readevent()
 	end
 	assert(self.offset < self.length)
 	local event = {delta=self:readvarint(), status=self:readbyte()}
-	if event.status == 0xF0 then
+	if event.status == 0xF0 or event.status == 0xF7 then
 		local length = self:readvarint()
 		if self.length - self.offset < length then
 			error('midi sysex event is truncated')
@@ -157,9 +157,12 @@ end
 
 local f = midifile:new(mid)
 for track in f:tracks() do
+	local sysex
 	for event in track:events() do
 		if event.status == 0xF0 then
-			handlesysex(event.sysex)
+			sysex = event.sysex
+		elseif event.status == 0xF7 then
+			sysex = sysex..event.sysex
 		elseif event.status == 0xFF then
 			if event.metatype == 0x03 then
 				local name = event.metadata
@@ -169,6 +172,10 @@ for track in f:tracks() do
 			elseif event.metatype == 0x2F then
 				break
 			end
+		end
+		if sysex and sysex:byte(-1) == 0xF7 then
+			handlesysex(sysex)
+			sysex = nil
 		end
 	end
 end
