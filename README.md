@@ -86,7 +86,8 @@ flash it to the device.
 4. For the first 16 seconds, the LED display will show the two
    triangle icons used during tuning. This indicates that the flash
    is being erased prior to writing. After this, the green dot will
-   start flashing while the new firmware is written.
+   start flashing while the new firmware is written. The whole
+   process should take around 2.5 minutes.
 5. If successful, the display will show `E`, `n`, `d` in a loop.
 6. Reboot into the new firmware by power cycling the amp.
 
