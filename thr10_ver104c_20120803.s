@@ -32,6 +32,8 @@ func 0x201AF88+1,  584, amp_set_cabinet
 func 0x201E598+1,   16, panel_get_buttons
 func 0x201E72C+1,  102, panel_set_led
 func 0x2028CB8+1, 3488, control_handle_buttons
+func 0x201BC2C+1,   12, control_get_headphone_connected
+func 0x2017380+1,   12, control_set_speaker
 func 0x203D988+1,  282, dsp_command
 data 0x101260C,      2, tuner_active
 data 0x4021904,     16, amp_state, base=.data.dsp-0x4000000

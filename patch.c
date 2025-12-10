@@ -1,6 +1,13 @@
 #include "thr10.h"
 
 static bool cab_bypass;
+static bool force_speaker;
+
+void
+wrap_control_set_speaker(int on)
+{
+	control_set_speaker(on || force_speaker);
+}
 
 int
 wrap_dsp_command(struct dsp_command *cmd)
@@ -42,6 +49,13 @@ wrap_control_handle_buttons(void)
 			panel_set_led(PANEL_LED_TUNE_LEFT, !cab_bypass);
 			panel_set_led(PANEL_LED_TUNE_RIGHT, !cab_bypass);
 			amp_set_cabinet(cab_bypass ? 6 : amp_state.cabinet, 1);
+			wait_release = true;
+			return;
+		}
+		if (button & ~button_prev & PANEL_BUTTON_PRESET2) {
+			force_speaker ^= 1;
+			panel_set_led(PANEL_LED_TUNE_CENTER, !force_speaker);
+			wrap_control_set_speaker(!control_get_headphone_connected());
 			wait_release = true;
 			return;
 		}
