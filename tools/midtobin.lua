@@ -56,9 +56,9 @@ local function handlesysex(sysex)
 		if #sysex ~= 13 then
 			error('unexpected DTA1CSUM size')
 		end
-		local dta1csum = sysex:byte(12)
-		if dta1csum ~= ~checksum + 1 & 0x7F then
-			error('bad checksum, expected '..dta1csum..' got '..checksum)
+		checksum = checksum + sysex:byte(12) & 0x7F
+		if checksum ~= 0 then
+			error('bad checksum, expected 0, got '..checksum)
 		end
 		print('checksum matched')
 	else

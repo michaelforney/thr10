@@ -46,5 +46,5 @@ wrap_control_handle_buttons(void)
 			return;
 		}
 	}
-	controller_handle_buttons();
+	control_handle_buttons();
 }

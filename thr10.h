@@ -29,8 +29,8 @@ enum panel_led {
 void panel_set_led(int led, int off);
 int panel_get_buttons(unsigned short *buttons);
 
-/* controller */
-void controller_handle_buttons(void);
+/* control */
+void control_handle_buttons(void);
 
 /* amp emulation */
 struct amp_state {
