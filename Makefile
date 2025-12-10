@@ -54,7 +54,7 @@ thr10.bin: thr10.elf
 thr10.mid: thr10.bin tools/bintomid
 	tools/bintomid thr10.bin $@
 
-.PHONY:
+.PHONY: clean
 clean:
 	rm -f thr10.mid thr10.bin thr10.elf $(OBJ)\
 		thr10_ver104c_20120803.o thr10_ver104c_20120803.elf patch-thr10_ver104c_20120803.o\
