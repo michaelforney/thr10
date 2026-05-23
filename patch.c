@@ -55,7 +55,7 @@ wrap_control_handle_buttons(void)
 		if (button & ~button_prev & PANEL_BUTTON_PRESET2) {
 			force_speaker ^= 1;
 			panel_set_led(PANEL_LED_TUNE_CENTER, !force_speaker);
-			wrap_control_set_speaker(!control_get_headphone_connected());
+			wrap_control_set_speaker(!control_headphone_connected);
 			wait_release = true;
 			return;
 		}

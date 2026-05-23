@@ -32,7 +32,8 @@ int panel_get_buttons(unsigned short *buttons);
 /* control */
 void control_handle_buttons(void);
 void control_set_speaker(int on);
-int control_get_headphone_connected(void);
+
+extern bool control_headphone_connected;
 
 /* amp emulation */
 struct amp_state {
