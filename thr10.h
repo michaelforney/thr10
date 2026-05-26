@@ -51,19 +51,31 @@ extern struct amp_state amp_state;
 int amp_set_cabinet(int type, int source);
 
 /* dsp */
-struct dsp_command {
-	unsigned short block;
-	unsigned char type;
-	unsigned char field2;
-	unsigned short field3;
-	unsigned short field4;
-	unsigned short field5;
-	unsigned field6;
-	unsigned field7;
+union dsp_command {
+	struct {
+		unsigned short block;
+		unsigned char type;
+	};
+	struct {
+		unsigned short block;
+		unsigned char type;
+		unsigned char param;
+		unsigned short value;
+	} setparam;
+	struct {
+		unsigned short block;
+		unsigned char type;
+		unsigned char flags;
+		unsigned short id;
+		unsigned short numparams1;
+		unsigned short field5;
+		unsigned short *params1;
+		unsigned short *params2;
+	} setblock;
 };
-_Static_assert(sizeof(struct dsp_command) == 20, "incorrect struct dsp_command size");
+_Static_assert(sizeof(union dsp_command) == 20, "incorrect union dsp_command size");
 
-int dsp_command(struct dsp_command *cmd);
+int dsp_command(union dsp_command *cmd);
 
 /* tuner */
 extern unsigned short tuner_active;

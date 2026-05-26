@@ -10,18 +10,17 @@ wrap_control_set_speaker(int on)
 }
 
 int
-wrap_dsp_command(struct dsp_command *cmd)
+wrap_dsp_command(union dsp_command *cmd)
 {
 	if (cab_bypass && cmd->block == 2) {
 		switch (cmd->type) {
 		case 1:
-			if (cmd->field2 != 0)
-				break;
-			/* fallthrough */
+			if (cmd->setparam.param == 0)
+				cmd->setparam.value = 0;
+			break;
 		case 0:
-			cmd->type = 1;
-			cmd->field2 = 0;
-			cmd->field3 = 0;
+			if (cmd->setblock.id == 0x1b00 && !(cmd->setblock.flags & 2) && cmd->setblock.numparams1 > 0)
+				cmd->setblock.params1[0] = 0;
 			break;
 		}
 	}
