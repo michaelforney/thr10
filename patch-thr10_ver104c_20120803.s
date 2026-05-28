@@ -46,3 +46,5 @@ patch 0x201ACCA,bl wrap_dsp_command @ amp 4
 
 patch 0x202BF4A,bl wrap_control_set_speaker
 patch 0x202BFA4,bl wrap_control_handle_buttons
+
+patch 0x2074318,.short -10
