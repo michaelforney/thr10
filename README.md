@@ -93,7 +93,7 @@ flash it to the device.
 
 ## Firmware modifications
 
-### Speaker simulation bypass
+### Cabinet simulation bypass
 
 Each of the amp's firmware models has an associated speaker cabinet
 emulation. This can be changed over MIDI using the THR Editor or
@@ -117,3 +117,16 @@ will be disabled. When the amp model is changed or a preset is
 loaded, the speaker emulation will remain disabled.
 
 When speaker bypass mode is disabled, the device functions normally.
+
+### Speaker force on
+
+Normally, the internal speakers are muted when the headphone jack
+is connected. It may be desirable to keep them on for monitoring
+when the headphone jack is used as a line-out.
+
+This modification adds a force speaker mode that can be toggled by
+pressing and holding the TAP/TIME button and then pressing the
+preset 2 button.
+
+When this mode is enabled, the LED display will show the green
+circle used in tuning mode.
