@@ -3,7 +3,7 @@ and patching Yamaha THR10/THR10c/THR10x firmware.
 
 For more details about this project, see my [write-up].
 
-[write-up]: https://mforney.org/blog/patching-my-guitar-amps-firmware.html
+[write-up]: https://mforney.org/blog/2026-05-28-patching-my-guitar-amps-firmware.html
 
 ### Requirements
 
