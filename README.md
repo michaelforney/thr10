@@ -48,8 +48,8 @@ your device.
    `lua tools/midtobin.lua fw.mid fw.bin`. If successful, you should
    see the message `checksum matched`.
 8. Calculate the SHA256 sum of your dumped `fw.bin` to find the
-   firmware it matches in the [Supported firmwares](#Supported
-   firmwares) table, and rename it appropriately.
+   firmware it matches in the [Supported firmwares](#Supported firmwares)
+   table, and rename it appropriately.
 
 ### Building
 
