@@ -1,6 +1,10 @@
 This repository contains some tools and scripts for working with
 and patching Yamaha THR10/THR10c/THR10x firmware.
 
+For more details about this project, see my [write-up].
+
+[write-up]: https://mforney.org/blog/patching-my-guitar-amps-firmware.html
+
 ### Requirements
 
 - armeb-none-eabi toolchain
